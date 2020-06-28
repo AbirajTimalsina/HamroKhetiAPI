@@ -6,8 +6,8 @@ const User = require('../Models/users');
 const auth = require('./Auth');
 
 router.post('/signup', (req, res, next) => {
-    let password = req.body.password;
-    bcrypt.hash(password, 10, function(err, hash) {
+    let Password = req.body.Password;
+    bcrypt.hash(Password, 10, function(err, hash) {
       if (err) {
         let err = new Error('Could not hash!');
         err.status = 500;
@@ -15,7 +15,7 @@ router.post('/signup', (req, res, next) => {
       }
       User.create({
         Fullname: req.body.Fullname,
-        Pasword: hash,
+        Password: hash,
         image: req.body.image
       })
         .then(user => {
@@ -27,7 +27,7 @@ router.post('/signup', (req, res, next) => {
   });
   
   router.post('/login', (req, res, next) => {
-    User.findOne({ username: req.body.username })
+    User.findOne({ Fullname: req.body.Fullname })
       .then(user => {
         if (user == null) {
           let err = new Error('User not found!');
@@ -35,7 +35,7 @@ router.post('/signup', (req, res, next) => {
           return next(err);
         } else {
           bcrypt
-            .compare(req.body.password, user.password)
+            .compare(req.body.Password, user.Password)
             .then(isMatch => {
               if (!isMatch) {
                 let err = new Error('Password does not match!');
@@ -54,9 +54,7 @@ router.post('/signup', (req, res, next) => {
   router.get('/me', auth.verifyUser, (req, res, next) => {
     res.json({
       _id: req.user._id,
-      firstName: req.user.firstName,
-      lastName: req.user.lastName,
-      username: req.user.username,
+      Fullname: req.user.Fullname,
       image: req.user.image
     });
   });
