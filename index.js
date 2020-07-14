@@ -5,8 +5,9 @@ const dotenv = require('dotenv').config();
 const cors = require('cors');
 
 //Routes
-const RouteUser = require('./Routes/users');
-const Auth = require('./Routes/Auth');
+const uploadRouter = require('./Routes/upload')
+const ProductList = require('./Routes/productList')
+const Category = require('./Routes/category');
 
 //Using
 const app = express();
@@ -15,6 +16,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.options('*', cors());
 app.use(cors());
+
+app.use('/upload',uploadRouter);
+app.use('/productList',ProductList);
+app.use('/category',Category);
+
 
 mongoose
 	.connect(process.env.URL, {
@@ -27,7 +33,7 @@ mongoose
 		console.log('Successfully Connected to mongodb server');
     });
     
-app.use('/users',RouteUser);
+
 
 app.listen(process.env.PORT,()=>{
     console.log(`Application is running in localhost:${process.env.PORT}`);
