@@ -16,7 +16,7 @@ router.post('/productList',(req,res,next)=>{
     .catch(next);
 });
 
-router.get('./productList/:categoryId', (req,res,next)=>{
+router.get('/productList/:categoryId', (req,res,next)=>{
     ProductList.find({ category: req.params.categoryId })
     .then(productList=>{
         res.json(productList);
@@ -28,6 +28,19 @@ router.get('/allProduct', (req,res,next)=>{
     ProductList.find()
     .then(productList=>{
         res.json(productList);
+    })
+    .catch(next);
+});
+
+router.put('/productList/:categoryId', (req,res,next)=>{
+    // res.json("ABcd");
+    // return;
+    ProductList.findOneAndUpdate({
+        product_name: req.body.product_name,
+        product_price: req.body.product_price,
+        product_image: req.body.product_image })
+    .then(productList=>{
+        res.json({status:'Sucessfullly updated',productList});
     })
     .catch(next);
 });
