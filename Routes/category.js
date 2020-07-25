@@ -4,18 +4,29 @@ const router = express.Router();
 
 router.post('/category',(req,res,next)=>{
     Category.create({
-        category:req.body.category
+        category:req.body.category,
+        category_image:req.body.category_image
     })
     .then(category=>{
-        res.json({status:'Category Successfully Created'})
+        res.json({status:'Category Successfully Created',category})
     })
     .catch(next)
 });
-
+router.put('/category/:categoryId', (req,res,next)=>{
+    // res.json("ABcd");
+    // return;
+    categoryId.findOneAndUpdate({
+        category: req.body.category,
+        category_image: req.body.category_image })
+    .then(productList=>{
+        res.json({status:'Sucessfullly updated',category});
+    })
+    .catch(next);
+});
 router.get('/category',(req,res,next)=>{
     Category.find({category:req.params.categoryId })
     .then(category=>{
-        res.json(quiz);
+        res.json(category);
     })
     .catch(next);
 });
