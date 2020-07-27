@@ -17,14 +17,16 @@ router.post('/productList',(req,res,next)=>{
 });
 
 router.get('/productList/:categoryId', (req,res,next)=>{
+    //console.log(req.params.categoryId);
     ProductList.find({ category: req.params.categoryId })
     .then(productList=>{
+      //  console.log(productList);
         res.json(productList);
     })
     .catch(next);
 });
 
-router.get('/allProduct', (req,res,next)=>{
+router.get('/allproduct', (req,res,next)=>{
     ProductList.find()
     .then(productList=>{
         res.json(productList);
