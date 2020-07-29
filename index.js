@@ -8,7 +8,7 @@ const cors = require('cors');
 const uploadRouter = require('./Routes/upload')
 const ProductList = require('./Routes/productList')
 const Category = require('./Routes/category');
-
+const Bugsinfo = require('./Routes/bugsinfo');
 //Using
 const app = express();
 app.use(express.json());
@@ -20,6 +20,7 @@ app.use(cors());
 app.use('/upload',uploadRouter);
 app.use('/productList',ProductList);
 app.use('/category',Category);
+app.use('/bugsinfo',Bugsinfo);
 
 
 mongoose
