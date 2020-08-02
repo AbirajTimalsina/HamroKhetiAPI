@@ -9,6 +9,8 @@ const uploadRouter = require('./Routes/upload')
 const ProductList = require('./Routes/productList')
 const Category = require('./Routes/category');
 const Bugsinfo = require('./Routes/bugsinfo');
+const Bugsdetail = require('./Routes/bugsDetail');
+
 //Using
 const app = express();
 app.use(express.json());
@@ -21,6 +23,7 @@ app.use('/upload',uploadRouter);
 app.use('/productList',ProductList);
 app.use('/category',Category);
 app.use('/bugsinfo',Bugsinfo);
+app.use('/bugsDetail',Bugsdetail);
 
 
 mongoose

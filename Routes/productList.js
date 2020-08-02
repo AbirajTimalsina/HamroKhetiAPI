@@ -2,7 +2,6 @@ const express = require('express');
 const ProductList = require('../Models/productList');
 const router = express.Router();
 
-
 router.post('/productList',(req,res,next)=>{
     ProductList.create({
         category: req.body.category,
@@ -11,7 +10,7 @@ router.post('/productList',(req,res,next)=>{
         product_image: req.body.product_image
     })
     .then(productList=>{
-        res.json({ status:'ProductList Successfully Inserted',Product: req.body });
+        res.json({ status:'ProductList Successfully Inserted', Product: req.body });
     })
     .catch(next);
 });
