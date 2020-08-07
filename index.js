@@ -10,6 +10,7 @@ const ProductList = require('./Routes/productList')
 const Category = require('./Routes/category');
 const Bugsinfo = require('./Routes/bugsinfo');
 const Bugsdetail = require('./Routes/bugsDetail');
+const Techinfo = require('./Routes/techinfo');
 
 //Using
 const app = express();
@@ -24,6 +25,7 @@ app.use('/productList',ProductList);
 app.use('/category',Category);
 app.use('/bugsinfo',Bugsinfo);
 app.use('/bugsDetail',Bugsdetail);
+app.use('/techinfo',Techinfo);
 
 
 mongoose
