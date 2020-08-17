@@ -11,6 +11,7 @@ const Category = require('./Routes/category');
 const Bugsinfo = require('./Routes/bugsinfo');
 const Bugsdetail = require('./Routes/bugsDetail');
 const Techinfo = require('./Routes/techinfo');
+const TechDetail = require('./Routes/techdetail');
 
 //Using
 const app = express();
@@ -26,7 +27,7 @@ app.use('/category',Category);
 app.use('/bugsinfo',Bugsinfo);
 app.use('/bugsDetail',Bugsdetail);
 app.use('/techinfo',Techinfo);
-
+app.use('/techDetail',TechDetail);
 
 mongoose
 	.connect(process.env.URL, {
@@ -39,7 +40,6 @@ mongoose
 		console.log('Successfully Connected to mongodb server');
     });
     
-
 
 app.listen(process.env.PORT,()=>{
     console.log(`Application is running in localhost:${process.env.PORT}`);

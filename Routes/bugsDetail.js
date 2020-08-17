@@ -33,7 +33,7 @@ router.get('/all', (req, res, next) => {
 router.put('/bugsDetail/:bugsDetailId', (req,res,next)=>{
     // res.json("ABcd");
     // return;
-    bugsDetailId.findOneAndUpdate({
+    Bugsdetail.findOneAndUpdate({
         bugsDetail_body: req.body.bugsDetail_body,
         bugsDetail_image: req.body.bugsDetail_image })
     .then(bugsDetail=>{
