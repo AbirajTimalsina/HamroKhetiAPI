@@ -15,7 +15,7 @@ router.post('/category',(req,res,next)=>{
 router.put('/category/:categoryId', (req,res,next)=>{
     // res.json("ABcd");
     // return;
-    categoryId.findOneAndUpdate({
+    Category.findOneAndUpdate({
         category: req.body.category,
         category_image: req.body.category_image })
     .then(productList=>{
@@ -23,7 +23,7 @@ router.put('/category/:categoryId', (req,res,next)=>{
     })
     .catch(next);
 });
-router.get('/category',(req,res,next)=>{
+router.get('/category/:categoryId',(req,res,next)=>{
     Category.find({category:req.params.categoryId })
     .then(category=>{
         res.json(category);

@@ -25,7 +25,7 @@ router.get('/productList/:categoryId', (req,res,next)=>{
     .catch(next);
 });
 
-router.get('/allproduct', (req,res,next)=>{
+router.get('/all', (req,res,next)=>{
     ProductList.find()
     .then(productList=>{
         res.json(productList);
@@ -41,7 +41,7 @@ router.put('/productList/:categoryId', (req,res,next)=>{
         product_price: req.body.product_price,
         product_image: req.body.product_image })
     .then(productList=>{
-        res.json({status:'Sucessfullly updated',productList});
+        res.json({status:'Sucessfullly updated',productList: req.body});
     })
     .catch(next);
 });
@@ -49,7 +49,7 @@ router.put('/productList/:categoryId', (req,res,next)=>{
 router.delete('/:productListId', (req,res,next)=>{
     ProductList.findByIdAndDelete(req.params.productListId)
     .then(productList=>{
-        res.json({status: 'ProductList Deleted Successfully'});
+        res.json({status: 'ProductList Deleted Successfully',productList: req.body});
     });
 });
 
