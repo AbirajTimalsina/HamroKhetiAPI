@@ -6,11 +6,11 @@ router.post('/productList',(req,res,next)=>{
     ProductList.create({
         category: req.body.category,
         product_name: req.body.product_name,
-        product_price: req.body.product_price,
+        product_Price: req.body.product_Price,
         product_image: req.body.product_image
     })
     .then(productList=>{
-        res.json({ status:'ProductList Successfully Inserted', Product: req.body });
+        res.json({ status:'ProductList Successfully Inserted', productList: req.body });
     })
     .catch(next);
 });
@@ -38,7 +38,8 @@ router.put('/productList/:categoryId', (req,res,next)=>{
     // return;
     ProductList.findOneAndUpdate({
         product_name: req.body.product_name,
-        product_price: req.body.product_price,
+        product_MaxPrice: req.body.product_MaxPrice,
+        product_MinPrice:req.body.product_MinPrice,
         product_image: req.body.product_image })
     .then(productList=>{
         res.json({status:'Sucessfullly updated',productList: req.body});
