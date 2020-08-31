@@ -13,23 +13,22 @@ router.post('/bugsinfo',(req,res,next)=>{
     .catch(next)
 });
 
-router.put('/bugsinfo/:bugsinfoId', (req,res,next)=>{
-    // res.json("ABcd");
-    // return;
-    bugsinfoId.findOneAndUpdate({
-        bugsinfo: req.body.bugsinfo,
-        bugsinfo_image: req.body.bugsinfo_image })
-    .then(bugsinfo=>{
-        res.json({status:'Sucessfullly updated',bugsinfo});
-    })
-    .catch(next);
-});
-router.get('/bugsinfo',(req,res,next)=>{
-    Bugsinfo.find({bugsinfo:req.params.bugsinfoId })
+router.get('/bugsinfo/:bugsinfoId',(req,res,next)=>{
+    Bugsinfo.findById(req.params.bugsinfoId )
     .then(bugsinfo=>{
         res.json(bugsinfo);
     })
     .catch(next);
+});
+
+router.put('/bugsinfo/:bugsinfoId', (req,res,next)=>{
+    // res.json("ABcd");
+    // return;
+    Bugsinfo.findByIdAndUpdate(req.params.bugsinfoId, {$set:req.body}, {new:true} )
+        .then(bugsinfo=>{
+        res.json(bugsinfo);
+        })
+        .catch(next);
 });
 
 router.delete('/:bugsinfoId',(req,res,next)=>{

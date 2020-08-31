@@ -14,7 +14,7 @@ router.post('/techinfo',(req,res,next)=>{
 });
 
 router.get('/techinfo/:techinfoId',(req,res,next)=>{
-    Techinfo.find({techinfo:req.params.techinfoId })
+    Techinfo.findById(req.params.techinfoId)
     .then(techinfo=>{
         res.json(techinfo);
     })
@@ -24,9 +24,7 @@ router.get('/techinfo/:techinfoId',(req,res,next)=>{
 router.put('/techinfo/:techinfoId', (req,res,next)=>{
     // res.json("ABcd");
     // return;
-    techinfoId.findOneAndUpdate({
-        techinfo_title: req.body.techinfo_title,
-        techinfo_image: req.body.techinfo_image })
+    techinfoId.findByIdAndUpdate(req.params.techinfoId, {$set:req.body}, {new:true})
     .then(techinfo=>{
         res.json({status:'Sucessfullly updated',techinfo});
     })

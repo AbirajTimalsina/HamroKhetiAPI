@@ -12,19 +12,19 @@ router.post('/category',(req,res,next)=>{
     })
     .catch(next)
 });
+
 router.put('/category/:categoryId', (req,res,next)=>{
     // res.json("ABcd");
     // return;
-    Category.findOneAndUpdate({
-        category: req.body.category,
-        category_image: req.body.category_image })
-    .then(productList=>{
-        res.json({status:'Sucessfullly updated',category});
-    })
-    .catch(next);
+    Category.findByIdAndUpdate(req.params.categoryId, {$set:req.body}, {new:true} )
+        .then(category=>{
+        res.json(category);
+        })
+        .catch(next);
 });
+
 router.get('/category/:categoryId',(req,res,next)=>{
-    Category.find({category:req.params.categoryId })
+    Category.findById(req.params.categoryId)
     .then(category=>{
         res.json(category);
     })

@@ -23,8 +23,6 @@ const upload = multer({
     fileFilter: imageFileFilter
 })
 
-
-
 uploadRouter.route('/')
     .post(upload.single('image'), (req, res) => {
         res.json(req.file);

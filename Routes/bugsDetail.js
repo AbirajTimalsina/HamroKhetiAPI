@@ -15,12 +15,12 @@ router.post('/bugsDetail',(req,res,next)=>{
 });
 
 router.get('/bugsDetail/:bugsinfoId',(req,res,next)=>{
-    Bugsdetail.find({bugsDetail:req.params.bugsDetailId })
-    .then(bugsDetail=>{
-        res.json(bugsDetail);
-    })
-    .catch(next);
-});
+    Bugsdetail.find({bugsinfo:req.params.bugsinfoId})
+        .then(bugsDetail=>{
+                    res.json(bugsDetail);
+        })
+        .catch((err) =>next(err));
+    });
 
 router.get('/all', (req, res, next) => {
 	Bugsdetail.find()
@@ -30,16 +30,15 @@ router.get('/all', (req, res, next) => {
 		.catch(next);
 });
 
+
 router.put('/bugsDetail/:bugsDetailId', (req,res,next)=>{
     // res.json("ABcd");
     // return;
-    Bugsdetail.findOneAndUpdate({
-        bugsDetail_body: req.body.bugsDetail_body,
-        bugsDetail_image: req.body.bugsDetail_image })
-    .then(bugsDetail=>{
-        res.json({status:'Sucessfullly updated',bugsDetail});
-    })
-    .catch(next);
+    Bugsdetail.findByIdAndUpdate(req.params.bugsDetailId, {$set:req.body}, {new:true} )
+        .then(bugsDetail=>{
+        res.json(bugsDetail);
+        })
+        .catch(next);
 });
 
 
