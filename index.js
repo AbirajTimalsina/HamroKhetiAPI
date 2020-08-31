@@ -12,7 +12,8 @@ const Bugsinfo = require('./Routes/bugsinfo');
 const Bugsdetail = require('./Routes/bugsDetail');
 const Techinfo = require('./Routes/techinfo');
 const TechDetail = require('./Routes/techdetail');
-const Fertilizer = require('./Routes/fertilizer');
+const Link = require('./Routes/link');
+const FertilizerDetail = require('./Routes/fertilizerDetail');
 
 
 //Using
@@ -30,7 +31,9 @@ app.use('/bugsinfo',Bugsinfo);
 app.use('/bugsDetail',Bugsdetail);
 app.use('/techinfo',Techinfo);
 app.use('/techDetail',TechDetail);
-app.use('/fertilizer',Fertilizer);
+app.use('/link',Link);
+app.use('/fertilizerDetail',FertilizerDetail);
+
 
 mongoose
 	.connect(process.env.URL, {
