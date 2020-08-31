@@ -13,7 +13,7 @@ const Bugsdetail = require('./Routes/bugsDetail');
 const Techinfo = require('./Routes/techinfo');
 const TechDetail = require('./Routes/techdetail');
 const Link = require('./Routes/link');
-const FertilizerDetail = require('./Routes/fertilizerDetail');
+
 
 
 //Using
@@ -32,7 +32,7 @@ app.use('/bugsDetail',Bugsdetail);
 app.use('/techinfo',Techinfo);
 app.use('/techDetail',TechDetail);
 app.use('/link',Link);
-app.use('/fertilizerDetail',FertilizerDetail);
+
 
 
 mongoose
