@@ -31,16 +31,27 @@ router.get('/all', (req, res, next) => {
 });
 
 
-router.put('/bugsDetail/:bugsDetailId', (req,res,next)=>{
+// router.put('/bugsDetail/:bugsDetailId', (req,res,next)=>{
+//     // res.json("ABcd");
+//     // return;
+//     Bugsdetail.findByIdAndUpdate(req.params.bugsDetailId, {$set:req.body}, {new:true} )
+//         .then(bugsDetail=>{
+//         res.json(bugsDetail);
+//         })
+//         .catch(next);
+// });
+
+router.put('/bugsDetail/:bugsinfoId', (req,res,next)=>{
     // res.json("ABcd");
     // return;
-    Bugsdetail.findByIdAndUpdate(req.params.bugsDetailId, {$set:req.body}, {new:true} )
-        .then(bugsDetail=>{
-        res.json(bugsDetail);
-        })
-        .catch(next);
+    Bugsdetail.findOneAndUpdate({Bugsdetail:req.params.bugsDetailId,
+        bugsDetail_body: req.body.bugsDetail_body,
+        bugsDetail_image: req.body.bugsDetail_image, })
+    .then(bugsDetail=>{
+        res.json({status:'Sucessfullly updated',bugsDetail: req.body});
+    })
+    .catch(next);
 });
-
 
 router.delete('/:bugsDetailId',(req,res,next)=>{
     Bugsdetail.findByIdAndDelete(req.params.bugsDetailId)

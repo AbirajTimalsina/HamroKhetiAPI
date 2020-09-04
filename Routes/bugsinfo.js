@@ -14,7 +14,7 @@ router.post('/bugsinfo',(req,res,next)=>{
 });
 
 router.get('/bugsinfo/:bugsinfoId',(req,res,next)=>{
-    Bugsinfo.findById(req.params.bugsinfoId )
+    Bugsinfo.find({bugsinfo:req.params.bugsinfoId })
     .then(bugsinfo=>{
         res.json(bugsinfo);
     })
@@ -24,9 +24,9 @@ router.get('/bugsinfo/:bugsinfoId',(req,res,next)=>{
 router.put('/bugsinfo/:bugsinfoId', (req,res,next)=>{
     // res.json("ABcd");
     // return;
-    Bugsinfo.findByIdAndUpdate(req.params.bugsinfoId, {$set:req.body}, {new:true} )
+    Bugsinfo.findOneAndUpdate(req.params.bugsinfoId,{$set:req.body}, {new:true})
         .then(bugsinfo=>{
-        res.json(bugsinfo);
+        res.json({status:'Sucessfullly updated',bugsinfo: req.body});
         })
         .catch(next);
 });
