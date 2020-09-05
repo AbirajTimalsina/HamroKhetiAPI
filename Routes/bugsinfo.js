@@ -14,7 +14,7 @@ router.post('/bugsinfo',(req,res,next)=>{
 });
 
 router.get('/bugsinfo/:bugsinfoId',(req,res,next)=>{
-    Bugsinfo.find({bugsinfo:req.params.bugsinfoId })
+    Bugsinfo.findById(req.params.bugsinfoId)
     .then(bugsinfo=>{
         res.json(bugsinfo);
     })

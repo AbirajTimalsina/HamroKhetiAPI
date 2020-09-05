@@ -13,7 +13,7 @@ router.post('/bugsDetail',(req,res,next)=>{
     })
     .catch(next);
 });
-
+ 
 router.get('/bugsDetail/:bugsinfoId',(req,res,next)=>{
     Bugsdetail.find({bugsinfo:req.params.bugsinfoId})
         .then(bugsDetail=>{
