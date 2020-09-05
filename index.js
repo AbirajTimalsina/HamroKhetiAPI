@@ -11,10 +11,8 @@ const Category = require('./Routes/category');
 const Bugsinfo = require('./Routes/bugsinfo');
 const Bugsdetail = require('./Routes/bugsDetail');
 const Techinfo = require('./Routes/techinfo');
-const TechDetail = require('./Routes/techdetail');
+const TechDetail = require('./Routes/techDetail');
 const Link = require('./Routes/link');
-
-
 
 //Using
 const app = express();
